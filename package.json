@@ -1,0 +1,73 @@
+{
+  "name": "dsh-wechat-group",
+  "version": "0.1.0",
+  "description": "把 DSH 的陪伴角色接进微信：会 @ 人、会引用、会发语音，后台发送不抢焦点",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "lib",
+    "resources",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-connection"
+      ],
+      "platform": "web"
+    }
+  },
+  "license": "MIT",
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "pdfjs-dist": "^4.10.38",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "rolldown": "1.0.0-beta.7",
+    "tsdown": "^0.8.0",
+    "typescript": "^5.9.0"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "watch": "tsdown --watch",
+    "test:memory": "node tests/memory-v3.test.mjs",
+    "test:proactive": "node tests/proactive.test.mjs",
+    "test:mood": "node tests/mood.test.mjs",
+    "test:voice": "node tests/voice-trigger.test.mjs",
+    "test:reply": "node tests/reply-plan.test.mjs",
+    "test:private": "node tests/private.test.mjs",
+    "test": "npm run test:memory && npm run test:memory-center && npm run test:decision && npm run test:dedupe && npm run test:safety && npm run test:persona && npm run test:speech && npm run test:safetydoc && npm run test:tracepeople && npm run test:proactive && npm run test:mood && npm run test:voice && npm run test:reply && npm run test:private",
+    "patches:verify": "node patches/verify.mjs",
+    "patches:apply": "node patches/apply.mjs",
+    "patches:check": "node patches/apply.mjs --check",
+    "test:memory-center": "node tests/memory-center.test.mjs",
+    "test:decision": "node tests/decision.test.mjs",
+    "test:dedupe": "node tests/memory-dedupe.test.mjs",
+    "test:safety": "node tests/safety.test.mjs",
+    "test:persona": "node tests/persona-raw.test.mjs && node tests/persona-route.test.mjs",
+    "test:speech": "node tests/speech-join.test.mjs",
+    "test:safetydoc": "node tests/safety-doc.test.mjs",
+    "test:tracepeople": "node tests/trace-people-time.test.mjs"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SenuMirai/dsh-whale-wechat.git"
+  },
+  "homepage": "https://github.com/SenuMirai/dsh-whale-wechat#readme",
+  "bugs": {
+    "url": "https://github.com/SenuMirai/dsh-whale-wechat/issues"
+  },
+  "author": "SenuMirai"
+}

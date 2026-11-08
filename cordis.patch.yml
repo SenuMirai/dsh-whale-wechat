@@ -1,0 +1,5 @@
+# 微信版（dsh-wechat-group）的插件插入。
+# entry id 必须独立：和 dsh-qq-group 同名会撞车，DSH 起不来。
+- insert:
+    - id: dsh-wechat-group
+      name: dsh-wechat-group
