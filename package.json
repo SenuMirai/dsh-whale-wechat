@@ -1,7 +1,7 @@
 {
   "name": "dsh-wechat-group",
   "version": "0.1.0",
-  "description": "把 DSH 的陪伴角色接进微信：会 @ 人、会引用、会发语音，后台发送不抢焦点",
+  "description": "微信版：和 dsh-qq-group 同一套机制（接话评分/主动搭话/记忆/画像/心情/防护），传输层换成 OneBot 11 —— 由 shim 把微信翻译成 OneBot，插件本体不改",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -60,14 +60,5 @@
   },
   "engines": {
     "node": ">=22.12.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SenuMirai/dsh-whale-wechat.git"
-  },
-  "homepage": "https://github.com/SenuMirai/dsh-whale-wechat#readme",
-  "bugs": {
-    "url": "https://github.com/SenuMirai/dsh-whale-wechat/issues"
-  },
-  "author": "SenuMirai"
+  }
 }

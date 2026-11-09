@@ -109,7 +109,9 @@ export async function postWorldSay(
       'content-type': 'application/json',
       'x-dsh-world-token': info.token,
     },
-    body: JSON.stringify({ text, ...(encodedImages.length > 0 ? { images: encodedImages } : {}) }),
+    // ticket = 自己的 outlet 名：她说完的话只回这条线，不串到别的平台。
+    // （2026-11-09；世界那边按 ticket 选 outlet，见 dsh-world bridge.js 的 send()）
+    body: JSON.stringify({ text, ticket: 'wechat', ...(encodedImages.length > 0 ? { images: encodedImages } : {}) }),
     signal: AbortSignal.timeout(20_000),
   });
   if (!response.ok) {
